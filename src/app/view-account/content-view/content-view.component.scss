@@ -1,0 +1,18 @@
+.col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  .box-text {
+    padding: 1.5rem;
+    h2 {
+      display: inline-block;
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+    }
+    p {
+      margin-left: 0.5rem;
+      display: inline;
+      font-size: 1.4rem;
+    }
+  }
+}

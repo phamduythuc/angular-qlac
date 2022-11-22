@@ -1,0 +1,52 @@
+.account-list {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 3rem 3rem 3rem;
+  background-color: #fff;
+  box-shadow: rgba(50, 50, 93, 0.507) 0px 23px 37px -15px,
+    rgba(0, 0, 0, 0.452) 0px 18px 26px -18px;
+  border-radius: 2rem;
+  .header-table {
+    padding: 3rem 0 2.5rem 0;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    .search {
+      width: 100%;
+      input {
+        width: 60%;
+        padding: 1.2rem 3rem;
+        border: none;
+        border-radius: 1.5rem;
+        background-color: rgb(233, 232, 232);
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .btn-primary {
+      width: 20%;
+      font-size: 1.6rem;
+      color: #fff;
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1.2rem 2.5rem;
+      background: var(--orange);
+    }
+  }
+  .table-bg {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 450px;
+    background-color: #fff;
+  }
+}

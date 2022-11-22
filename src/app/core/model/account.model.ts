@@ -19,10 +19,10 @@ export function createAccount(data: Partial<Account>): Account {
   } as Account;
 }
 
-
 export type ParamSearch = {
   limit: number;
   start: number;
+  end: number;
   last_name: string;
   first_name: string;
   email: string;
@@ -32,6 +32,6 @@ export type ParamSearch = {
 
 export function createParamSearch(param: Partial<ParamSearch>): ParamSearch {
   return {
-    ...param
+    ...param,
   } as ParamSearch;
 }

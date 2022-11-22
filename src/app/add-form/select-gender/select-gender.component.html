@@ -1,0 +1,23 @@
+<div class="input-box">
+  <label for="" class="label-title">
+    {{ label }}
+    <span *ngIf="required">( <sup>*</sup> {{ require }})</span>
+
+    <span *ngIf="!required">({{ require }})</span>
+  </label>
+  <select
+    [formControl]="control"
+    class="input-control"
+    [ngClass]="{
+      border: control?.touched && control?.errors?.required
+    }"
+    name="gender"
+    id=""
+  >
+    <option value="M">Men</option>
+    <option value="F">Women</option>
+  </select>
+  <ng-container *ngIf="control?.touched">
+    <div class="error" *ngIf="control?.errors?.required">{{ label }} Empty</div>
+  </ng-container>
+</div>

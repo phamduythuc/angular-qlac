@@ -1,36 +1,57 @@
 <div class="account-list">
-  <button (click)="openAddAccount()">Add Account</button>
-  <ng-container *ngIf="isOpenAddAccount">
-    <div class="add-account">
-      <button (click)="saveNew()">Save</button>
+  <div class="header-table">
+    <div class="search">
+      <input
+        type="text"
+        [(ngModel)]="searchStr"
+        (ngModelChange)="search()"
+        placeholder="Search account..."
+      />
     </div>
-  </ng-container>
-  <ng-container *ngIf="isOpenEditAccount">
-    <div class="add-account">
-      <button (click)="saveEdit()">Save</button>
-    </div>
-  </ng-container>
-  <div class="search">
-    <input type="text" [(ngModel)]="searchStr" (ngModelChange)="search()">
+    <button class="btn btn-primary" (click)="openAddAccount()">
+      Add Account
+    </button>
+    <ng-container *ngIf="isOpenAddAccount">
+      <app-form
+        (close)="openAddAccount()"
+        (save)="saveNew()"
+        (load)="getAllAccount()"
+      >
+      </app-form>
+    </ng-container>
   </div>
-  <table>
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Balance</th>
-      <th>Thao tác</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr  *ngFor="let account of account; let index=index">
-      <td>{{account.firstname}} {{account.lastname}}</td>
-      <td>{{account.age}}</td>
-      <td>{{account.balance}}</td>
-      <td>
-        <button (click)="openEdit(account)">Sửa</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <ng-container *ngIf="loading">
+    <div class="table-bg">
+      <app-loading></app-loading>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="view">
+    <app-view (open)="openView()"></app-view>
+  </ng-container>
+  <ng-container *ngIf="table">
+    <app-table-element
+      [acc]="displayAccount"
+      (button)="openEdit()"
+      (load)="getAllAccount()"
+      (openView)="openView()"
+    ></app-table-element>
+    <ng-container *ngIf="isOpenEditAccount">
+      <app-form
+        (close)="openEdit()"
+        (load)="getAllAccount()"
+        [isOpenEdit]="isOpenEditAccount"
+        (edit)="saveEdit()"
+      >
+      </app-form>
+    </ng-container>
+    <app-panigation
+      [totalAccounts]="total"
+      [currentPage]="currentPage"
+      [totalPage]="totalPage"
+      [active]="accountActive"
+      (next)="nextPage($event)"
+      (prev)="prevPage($event)"
+      (itemPerPage)="getItemPerPage($event)"
+    ></app-panigation>
+  </ng-container>
 </div>

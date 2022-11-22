@@ -1,0 +1,51 @@
+.panigation {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  .page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      color: rgb(102, 102, 102);
+    }
+    button {
+      cursor: pointer;
+      padding: 0.4rem 1rem;
+      border: none;
+      background-color: #d6d4d4;
+      color: rgb(102, 102, 102);
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 2rem;
+      &:disabled {
+        background-color: #dfdfdf;
+        color: rgb(167, 167, 167);
+        cursor: not-allowed;
+      }
+    }
+  }
+  .total,
+  .active {
+    color: var(--text);
+  }
+  .active {
+    margin-right: 2.5rem;
+  }
+  .page-item {
+    margin-left: 2rem;
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: var(--orange);
+    option {
+      background-color: #fff;
+      color: var(--text);
+    }
+  }
+}

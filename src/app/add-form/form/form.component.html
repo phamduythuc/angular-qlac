@@ -1,0 +1,92 @@
+<app-modal-comp (click)="onClickClose()">
+  <form class="form" [formGroup]="formAdd">
+    <div class="box-grid">
+      <app-input
+        [format]="formAdd.get('firstname')?.value | titlecase"
+        require="required"
+        label="First Name"
+        [control]="formAdd.get('firstname')"
+      ></app-input>
+      <app-input
+        [format]="formAdd.get('lastname')?.value | titlecase"
+        require="required"
+        label="Last Name"
+        [control]="formAdd.get('lastname')"
+      ></app-input>
+      <app-input
+        require="required"
+        label="Age"
+        [control]="formAdd.get('age')"
+      ></app-input>
+      <app-input
+        require="option"
+        label="balance"
+        [control]="formAdd.get('balance')"
+      ></app-input>
+      <app-input
+        [format]="formAdd.get('city')?.value | titlecase"
+        require="required"
+        label="city"
+        [control]="formAdd.get('city')"
+      ></app-input>
+
+      <app-select-gender
+        require="required"
+        label="gender"
+        [control]="formAdd.get('gender')"
+      ></app-select-gender>
+      <app-input
+        [format]="formAdd.get('address')?.value | titlecase"
+        require="required"
+        label="address"
+        [control]="formAdd.get('address')"
+      ></app-input>
+      <app-input
+        require="option"
+        label="employer"
+        [control]="formAdd.get('employer')"
+      ></app-input>
+      <app-input
+        require="required"
+        label="email"
+        [control]="formAdd.get('email')"
+      ></app-input>
+      <app-input
+        [format]="formAdd.get('state')?.value | uppercase"
+        require="option"
+        label="state"
+        [control]="formAdd.get('state')"
+      ></app-input>
+      <app-input
+        require="option"
+        label="Account Number"
+        [control]="formAdd.get('account_number')"
+      ></app-input>
+    </div>
+
+    <div class="button-modal">
+      <button type="button" class="btn btn-cancel" (click)="onClickClose()">
+        Cancel
+      </button>
+      <button
+        *ngIf="!changebutton"
+        [disabled]="formAdd.invalid"
+        type="button"
+        class="btn btn-primary btn-save"
+        (click)="clickSaveAccount()"
+      >
+        Submit
+      </button>
+      <button
+        *ngIf="changebutton"
+        [disabled]="formAdd.invalid"
+        type="button"
+        class="btn btn-primary btn-save"
+        (click)="clickEditAccount()"
+      >
+        fix
+      </button>
+      <ng-content></ng-content>
+    </div>
+  </form>
+</app-modal-comp>

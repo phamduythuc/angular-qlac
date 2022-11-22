@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <ng-container *ngFor="let col of column">
+        <th [ngStyle]="{ width: col.width }">{{ col.label }}</th>
+      </ng-container>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let account of acc; let index = index">
+      <td>{{ account.firstname }} {{ account.lastname }}</td>
+      <td>{{ account.age }}</td>
+      <td>{{ account.balance }}</td>
+      <td>{{ account.email }}</td>
+      <td>
+        <button class="btn btn-secondary edit" (click)="updateData(account)">
+          Edit
+        </button>
+        <button class="btn btn-secondary delete" (click)="deleteData(account)">
+          delete
+        </button>
+        <button class="btn btn-secondary view" (click)="viewData(account)">
+          View
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

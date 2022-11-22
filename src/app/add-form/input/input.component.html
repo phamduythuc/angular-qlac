@@ -1,0 +1,35 @@
+<div class="input-box">
+  <label for="" class="label-title">
+    {{ label }}
+    <span *ngIf="required">( <sup>*</sup> {{ require }})</span>
+
+    <span *ngIf="!required">({{ require }})</span>
+  </label>
+  <input
+    type="text"
+    class="input-control"
+    [formControl]="control"
+    [value]="format"
+    [ngClass]="{
+      border: control?.touched && control?.errors?.required
+    }"
+  />
+  <ng-container *ngIf="control?.touched">
+    <div class="error" *ngIf="control?.errors?.required">{{ label }} Empty</div>
+    <div
+      class="error"
+      *ngIf="
+        control?.errors?.maxlength?.actualLength >
+        control?.errors?.maxlength?.requiredLength
+      "
+    >
+      Tối đa 3 ký tự
+    </div>
+    <div class="error" *ngIf="control?.errors?.email">
+      Please enter a valid email.
+    </div>
+    <div class="error" *ngIf="control?.errors?.numberError">
+      Please enter number.
+    </div>
+  </ng-container>
+</div>

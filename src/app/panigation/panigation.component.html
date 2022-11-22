@@ -1,0 +1,36 @@
+<div class="panigation">
+  <div class="page">
+    <button
+      [disabled]="currentPage === 1"
+      class="btn btn-prev"
+      (click)="prevPage()"
+    >
+      &#60;
+    </button>
+    <span>{{ currentPage }}</span>
+    /
+    <span>{{ totalPage }}</span>
+    <button
+      [disabled]="currentPage === totalPage"
+      class="btn btn-next"
+      (click)="nextPage()"
+    >
+      &#62;
+    </button>
+    <select
+      name=""
+      id=""
+      (change)="changeItem(itemPage.value)"
+      [formControl]="itemPage"
+      class="page-item"
+    >
+      <option *ngFor="let item of itemAccounts" [value]="item">
+        {{ item }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <span class="active">Account: {{ active }}</span>
+    <span class="total">Total: {{ totalAccounts }}</span>
+  </div>
+</div>

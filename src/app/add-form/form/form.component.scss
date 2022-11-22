@@ -1,0 +1,14 @@
+.form {
+  .box-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .button-modal {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 2rem;
+  }
+}

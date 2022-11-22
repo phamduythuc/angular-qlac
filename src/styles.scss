@@ -1,1 +1,110 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --orange: #fb923c;
+  --text: #71717a;
+  --title: #52525b;
+  --edit: #eab308;
+  --delete: #dc2626;
+  --save: #22c55e;
+  --disabled: #86efac;
+  --view: #65a30d;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: sans-serif;
+  width: 100%;
+
+  padding: 5rem 0;
+  background: rgb(255, 168, 60);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 168, 60, 1) 0%,
+    rgba(255, 239, 195, 1) 50%,
+    rgba(219, 128, 0, 1) 100%
+  );
+}
+.btn {
+  cursor: pointer;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 1.2rem 2.5rem;
+}
+.btn-primary {
+  background: var(--save);
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background: rgb(70, 199, 68);
+  }
+}
+.btn-cancel {
+  color: #fff;
+  background-color: var(--delete);
+  &:hover {
+    background-color: rgb(241, 71, 71);
+  }
+}
+.btn-save:disabled {
+  background-color: var(--disabled);
+  cursor: not-allowed;
+}
+.edit {
+  background-color: var(--edit);
+}
+.delete {
+  background-color: var(--delete);
+}
+.view {
+  background-color: var(--view);
+}
+.input-box {
+  display: inline-block;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  .label-title {
+    display: block;
+    font-size: 1.6rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+    transition: all 0.2s;
+    span {
+      sup {
+        color: var(--delete);
+      }
+      color: #777;
+      font-size: 1.5rem;
+    }
+  }
+  .input-control {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    outline: none;
+    background-color: #f8f8f8;
+    border: 0.1rem solid #dfdfdf;
+    border-radius: 0.7rem;
+    font-size: 1.5rem;
+    color: #555;
+    &:focus {
+      outline: none;
+      box-shadow: 0.1rem 0.1rem 0.3rem rgba(10, 231, 65, 0.664);
+    }
+  }
+}
+
+.border {
+  border: 0.1rem solid var(--delete) !important;
+}
+.error {
+  font-size: 1.2rem;
+  color: var(--delete);
+  margin-top: 0.3rem;
+}

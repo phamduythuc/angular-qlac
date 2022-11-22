@@ -1,0 +1,7 @@
+<app-modal-comp (click)="closeModal()">
+  <div class="view-account">
+    <h2 class="title-user">Account Details</h2>
+    <app-content-view [title]="label" [acc]="account"></app-content-view>
+  </div>
+  <button class="btn close" (click)="closeModal()">&#10539;</button>
+</app-modal-comp>
