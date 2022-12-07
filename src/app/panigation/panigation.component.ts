@@ -7,7 +7,6 @@ import { DataService } from '../core/services/data.service';
   styleUrls: ['./panigation.component.scss'],
 })
 export class PanigationComponent implements OnInit {
-  @Input() totalAccounts: number = 0;
   @Input() currentPage: number = 0;
   @Input() totalPage: number = 0;
   @Input() active: number = 0;

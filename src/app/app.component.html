@@ -5,7 +5,7 @@
         type="text"
         [(ngModel)]="searchStr"
         (ngModelChange)="search()"
-        placeholder="Search account..."
+        placeholder="Search last name account..."
       />
     </div>
     <button class="btn btn-primary" (click)="openAddAccount()">
@@ -45,7 +45,6 @@
       </app-form>
     </ng-container>
     <app-panigation
-      [totalAccounts]="total"
       [currentPage]="currentPage"
       [totalPage]="totalPage"
       [active]="accountActive"

@@ -143,14 +143,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         return ok([]);
       }
       if (rs.length <= paramSearch.limit + paramSearch.start) {
-        return ok([...rs].slice(paramSearch.start, rs.length));
+        return ok([[...rs].slice(paramSearch.start, rs.length), rs.length]);
       } else {
-        return ok(
-          [...rs].slice(
-            paramSearch.start,
-            paramSearch.start + paramSearch.limit
-          )
-        );
+        return ok([
+          [...rs].slice(paramSearch.start, paramSearch.limit),
+          rs.length,
+        ]);
       }
     }
 

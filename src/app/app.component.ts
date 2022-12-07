@@ -39,7 +39,6 @@ export class AppComponent implements OnInit {
     private accountService: AccountService,
     private dataService: DataService
   ) {
-    // read data from file to localstorage
     this.unSubscribeAll = new Subject<any>();
     this.loadDataToLocal();
   }
@@ -49,11 +48,6 @@ export class AppComponent implements OnInit {
   }
   loadDataToLocal(): void {
     localStorage.setItem('accounts', JSON.stringify(Accounts));
-  }
-  totalAccounts(): void {
-    const accounts =
-      JSON.parse(localStorage.getItem('accounts') as string) || Accounts;
-    this.total = accounts.length;
   }
   setCurrentPage(): void {
     this.accPerPage = this.dataService.itemPage;
@@ -66,17 +60,18 @@ export class AppComponent implements OnInit {
       .getAccounts(
         createParamSearch({
           last_name: this.searchStr,
-          start: 0,
-          limit: 1000,
+          start: this.start,
+          limit: this.end,
         })
       )
       .pipe(takeUntil(this.unSubscribeAll))
       .subscribe(
         (resp: Account[]) => {
+          console.log(resp);
+          console.log(this.start, this.end);
           this.loading = false;
-          this.panigation(resp);
-          this.totalAccounts();
-          this.renderAccount(resp);
+          this.panigation(resp[1]);
+          this.renderAccount(resp[0]);
           this.table = true;
         },
         (err: Error) => {
@@ -91,14 +86,14 @@ export class AppComponent implements OnInit {
     this.getAllAccount();
   }
   renderAccount(resp: any) {
-    return (this.displayAccount = resp.slice(this.start, this.end));
+    return (this.displayAccount = resp);
   }
   panigation(resp: any) {
-    const total = resp.length;
-    this.accountActive = total;
-    this.totalPage = Math.ceil(total / this.accPerPage);
+    this.accountActive = resp;
+    this.totalPage = Math.ceil(resp / this.accPerPage);
   }
   nextPage(curent: any) {
+    console.log(curent);
     this.start = (curent - 1) * this.accPerPage;
     this.end = curent * this.accPerPage;
     this.getAllAccount();
